@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 /* Enable class-based dark mode (toggle by adding `.dark` to <html>). */
 @custom-variant dark (&:where(.dark, .dark *));
@@ -77,3 +78,37 @@
     color: #fff;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Prose (rendered Markdown) — map @tailwindcss/typography to our palette.
+--------------------------------------------------------------------------- */
+.prose {
+  --tw-prose-body: var(--text-primary);
+  --tw-prose-headings: var(--text-primary);
+  --tw-prose-links: var(--coral);
+  --tw-prose-bold: var(--text-primary);
+  --tw-prose-counters: var(--text-muted);
+  --tw-prose-bullets: var(--border);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--text-muted);
+  --tw-prose-quote-borders: var(--coral);
+  --tw-prose-captions: var(--text-muted);
+  --tw-prose-code: var(--text-primary);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
+}
+
+.prose :is(h1, h2, h3) {
+  font-family: var(--font-display);
+}
+
+.prose :is(code, pre) {
+  font-family: var(--font-mono);
+}
+
+/* Shiki blocks bring their own (github-dark) background. */
+.prose pre {
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+

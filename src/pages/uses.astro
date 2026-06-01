@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// TODO: replace with your real setup.
+const sections = [
+  {
+    title: 'Editor & Terminal',
+    items: ['TODO: editor + theme', 'TODO: terminal', 'TODO: shell + prompt'],
+  },
+  {
+    title: 'Languages & Tools',
+    items: ['Python', 'Django', 'Docker', 'TODO: the rest of your daily drivers'],
+  },
+  {
+    title: 'Hardware',
+    items: ['TODO: machine', 'TODO: keyboard', 'TODO: monitor'],
+  },
+];
+---
+
+<BaseLayout title="Uses" description="The tools, hardware, and setup I use day to day.">
+  <article class="max-w-2xl mx-auto px-5 py-16">
+    <h1 class="font-display text-4xl">Uses</h1>
+    <p class="text-muted mt-3">The tools and setup I reach for every day.</p>
+
+    <div class="mt-10 space-y-8">
+      {
+        sections.map((section) => (
+          <section>
+            <h2 class="font-display text-xl border-b border-border pb-2">{section.title}</h2>
+            <ul class="list-disc list-outside ml-5 mt-4 space-y-1 text-primary">
+              {section.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </article>
+</BaseLayout>
