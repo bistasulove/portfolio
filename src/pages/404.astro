@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { href } from '../consts';
+---
+
+<BaseLayout title="404" description="Page not found.">
+  <section class="max-w-2xl mx-auto px-5 py-28">
+    <p class="font-mono text-sm text-coral">// HTTP 404</p>
+    <h1 class="font-display text-5xl mt-4 leading-tight">This route doesn't resolve.</h1>
+    <p class="text-muted mt-4 max-w-lg">
+      Either the link is stale, or I haven't shipped this page yet. Honestly, both are plausible.
+    </p>
+
+    <!-- A little on-brand flex: a fake Django traceback. -->
+    <pre
+      class="font-mono text-sm bg-surface border border-border rounded-xl p-5 mt-8 overflow-x-auto leading-relaxed"
+      aria-hidden="true"
+    ><code><span class="text-muted">Traceback (most recent call last):</span>
+  File <span class="text-coral">"router.py"</span>, line <span class="text-coral">404</span>, in resolve
+    return view(request, *args, **kwargs)
+  File <span class="text-coral">"views.py"</span>, line <span class="text-coral">42</span>, in dispatch
+    raise Http404(request.path)
+<span class="text-coral font-medium">django.http.Http404</span>: No route matches this URL. <span class="text-muted"># skill issue?</span></code></pre>
+
+    <div class="flex flex-wrap items-center gap-3 mt-8">
+      <a
+        href={href('/')}
+        class="bg-coral hover:bg-coral-deep text-white rounded-lg px-4 py-2 text-sm font-medium transition-colors"
+      >
+        ← Back home
+      </a>
+      <a
+        href={href('/writing')}
+        class="border border-border hover:border-coral text-primary rounded-lg px-4 py-2 text-sm font-medium transition-colors"
+      >
+        Read the blog instead
+      </a>
+    </div>
+  </section>
+</BaseLayout>
