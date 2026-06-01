@@ -3,7 +3,7 @@ title: 'Kafka vs Celery: choosing the right async tool in Python'
 description: 'When to reach for a task queue and when you actually need an event log — a practical comparison from production experience.'
 publishDate: 2025-05-22
 tags: ['python', 'kafka', 'celery', 'architecture']
-draft: false
+draft: true
 ---
 
 > TODO: scaffolded draft — replace with your real take.

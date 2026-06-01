@@ -1,13 +1,24 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Tag from '../components/Tag.astro';
-import { SITE, CAREER, href } from '../consts';
+import { SITE, CAREER, EDUCATION, PROJECTS, href } from '../consts';
 
-// TODO: replace skills with your real stack groupings.
 const skills = {
   Languages: ['Python', 'JavaScript', 'TypeScript', 'SQL'],
-  'Frameworks & Tools': ['Django', 'FastAPI', 'React', 'Celery'],
-  Infrastructure: ['AWS', 'Docker', 'Kafka', 'PostgreSQL', 'Redis'],
+  Backend: [
+    'Django REST Framework',
+    'Flask',
+    'FastAPI',
+    'Celery',
+    'Pytest',
+    'Microservices',
+    'Multi-Tenancy',
+  ],
+  Frontend: ['React', 'Next.js', 'Tailwind', 'HTML5', 'CSS'],
+  'Data & Storage': ['PostgreSQL', 'Redis', 'ElasticSearch', 'Kafka', 'RabbitMQ'],
+  'Cloud & DevOps': ['AWS', 'Docker', 'Heroku', 'GitHub Actions', 'CI/CD', 'Linux'],
+  Observability: ['Datadog', 'Sentry', 'Metabase', 'Retool', 'Fullstory'],
+  Security: ['OAuth 2.0', 'JWT', '2FA/MFA', 'RBAC', 'Auth0'],
 };
 ---
 
@@ -17,13 +28,12 @@ const skills = {
       <div>
         <h1 class="font-display text-4xl">{SITE.name}</h1>
         <p class="text-muted mt-1">{SITE.role} · {SITE.location}</p>
-        <p class="font-mono text-xs text-muted mt-2">
+        <p class="font-mono text-xs text-muted mt-2 flex flex-wrap gap-x-2 gap-y-1">
           <a href={`mailto:${SITE.email}`} class="hover:text-coral">{SITE.email}</a> ·
           <a href={SITE.github} class="hover:text-coral">GitHub</a> ·
           <a href={SITE.linkedin} class="hover:text-coral">LinkedIn</a>
         </p>
       </div>
-      {/* TODO: add public/resume.pdf so this download resolves */}
       <a
         href={href('/resume.pdf')}
         download
@@ -36,15 +46,17 @@ const skills = {
     <section class="mt-10">
       <h2 class="font-display text-xl border-b border-border pb-2">Summary</h2>
       <p class="text-primary leading-relaxed mt-4">
-        {/* TODO: 2–3 line professional summary */}
-        Senior backend engineer with 7+ years building and operating production systems. TODO:
-        tailor this to the roles you want.
+        Senior software engineer with 7+ years building and scaling high-traffic APIs and cloud
+        platforms for SaaS products. A product-first engineer who owns critical modules end to end
+        — architecture, reliability, and the internal tooling around them — turning customer pain
+        points into high-impact software. Expert in Python, Django, PostgreSQL, and AWS, with
+        growing full-stack range across React and TypeScript.
       </p>
     </section>
 
     <section class="mt-10">
       <h2 class="font-display text-xl border-b border-border pb-2">Experience</h2>
-      <div class="mt-4 space-y-6">
+      <div class="mt-4 space-y-7">
         {
           CAREER.map((e) => (
             <div>
@@ -54,10 +66,13 @@ const skills = {
                 </p>
                 <p class="font-mono text-xs text-muted shrink-0">{e.period}</p>
               </div>
-              <ul class="list-disc list-outside ml-5 mt-2 text-sm text-primary space-y-1">
-                <li>{e.highlight}</li>
-                <li>{/* TODO: 2–3 more bullets with impact + metrics */}TODO: quantified achievement.</li>
+              <p class="font-mono text-xs text-muted mt-0.5">{e.location}</p>
+              <ul class="list-disc list-outside ml-5 mt-2 text-sm text-primary space-y-1.5 leading-relaxed">
+                {e.bullets.map((b) => (
+                  <li>{b}</li>
+                ))}
               </ul>
+              <p class="font-mono text-xs text-muted mt-2">{e.tech}</p>
             </div>
           ))
         }
@@ -69,10 +84,14 @@ const skills = {
       <div class="mt-4 space-y-3">
         {
           Object.entries(skills).map(([group, items]) => (
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2">
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-2">
               <span class="font-mono text-xs text-muted w-40 shrink-0">{group}</span>
               <ul class="flex flex-wrap gap-2">
-                {items.map((i) => <li><Tag label={i} /></li>)}
+                {items.map((i) => (
+                  <li>
+                    <Tag label={i} />
+                  </li>
+                ))}
               </ul>
             </div>
           ))
@@ -81,10 +100,56 @@ const skills = {
     </section>
 
     <section class="mt-10">
+      <h2 class="font-display text-xl border-b border-border pb-2">Projects</h2>
+      <div class="mt-4 space-y-6">
+        {
+          PROJECTS.map((p) => (
+            <div>
+              <div class="flex items-baseline justify-between gap-4">
+                <p class="font-medium">
+                  {p.name} <span class="text-muted font-normal">· {p.tagline}</span>
+                </p>
+                <p class="font-mono text-xs text-muted shrink-0">{p.year}</p>
+              </div>
+              <ul class="list-disc list-outside ml-5 mt-2 text-sm text-primary space-y-1.5 leading-relaxed">
+                {p.bullets.map((b) => (
+                  <li>{b}</li>
+                ))}
+              </ul>
+              <p class="mt-2 flex flex-wrap items-center gap-x-2 text-xs">
+                <span class="font-mono text-muted">{p.tech}</span>
+                <a href={href(`/work/${p.slug}`)} class="text-coral hover:underline shrink-0">
+                  Case study →
+                </a>
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mt-10">
       <h2 class="font-display text-xl border-b border-border pb-2">Education</h2>
-      <p class="text-primary mt-4">
-        {/* TODO: degree, institution, year */}TODO: Degree — Institution, Year.
-      </p>
+      <div class="mt-4 space-y-4">
+        {
+          EDUCATION.map((e) => (
+            <div>
+              <div class="flex items-baseline justify-between gap-4">
+                <p class="font-medium">{e.degree}</p>
+                <p class="font-mono text-xs text-muted shrink-0">{e.period}</p>
+              </div>
+              <p class="text-muted text-sm mt-0.5">
+                {e.institution} · {e.location}
+              </p>
+              <ul class="list-disc list-outside ml-5 mt-2 text-sm text-primary space-y-1">
+                {e.notes.map((n) => (
+                  <li>{n}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
     </section>
   </article>
 </BaseLayout>

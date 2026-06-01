@@ -3,7 +3,7 @@ title: 'What 7 years of backend engineering taught me about systems design'
 description: 'Hard-won lessons on building systems that stay reliable, maintainable, and humane over years — not just at launch.'
 publishDate: 2025-05-29
 tags: ['systems-design', 'career', 'backend']
-draft: false
+draft: true
 ---
 
 > TODO: scaffolded draft — this is your personal-brand piece, make it yours.

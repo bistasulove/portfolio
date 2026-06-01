@@ -16,6 +16,12 @@ const posts = (await getCollection('posts', (p) => !p.data.draft)).sort(
     <h1 class="font-display text-4xl">Writing</h1>
     <p class="text-muted mt-3">Notes on backend engineering, systems design, and Python.</p>
 
+    {
+      posts.length === 0 && (
+        <p class="text-muted mt-10">No posts yet — writing in progress. Check back soon.</p>
+      )
+    }
+
     <ul class="mt-10 divide-y divide-border">
       {
         posts.map((post) => (

@@ -3,7 +3,7 @@ title: 'How I built a multi-tenant SaaS on Django in 3 weeks'
 description: 'A walkthrough of the architecture decisions, mistakes, and tradeoffs behind shipping a multi-tenant Django app fast.'
 publishDate: 2025-05-15
 tags: ['django', 'saas', 'python', 'aws']
-draft: false
+draft: true
 ---
 
 > TODO: this is a scaffolded draft — replace the prose with your real experience.

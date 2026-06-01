@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Timeline from '../components/Timeline.astro';
 import { SITE, href } from '../consts';
 
-// TODO: replace with real values/working-style statements.
 const values = [
   'Boring, reliable systems beat clever, fragile ones.',
   'Write the code the next engineer can read at 2am.',
@@ -34,19 +33,22 @@ const personSchema = {
     {/* Intro — warm, personal, not a resume summary */}
     <div class="prose-custom mt-6 space-y-4 text-primary leading-relaxed">
       <p>
-        {/* TODO: 1–2 paragraph personal intro. Who you are beyond the job title. */}
-        I'm {SITE.name}, a backend engineer based in {SITE.location}. TODO: a couple of warm,
-        human sentences about who you are and what you care about.
+        I'm {SITE.name}, a software engineer in {SITE.location}. I like the unglamorous parts of
+        the job — the system that quietly handles peak traffic at 2am, the onboarding flow that
+        stops being a support ticket, the alert that fires before a customer notices. Most of my
+        career has been about owning a hard problem end to end, and being the person other teams
+        escalate to when it matters.
       </p>
       <p>
-        {/* TODO: career journey narrative — Nepal → Australia, why engineering, what drives you */}
-        TODO: the story of how you got here — what pulled you into engineering and what keeps
-        you in it.
+        I grew up in Nepal and went to India for my engineering degree, then spent my early career
+        in Bangalore building fintech and SaaS products — improving OCR pipelines and shipping
+        payment services at Fyle, then leading backend work back home in Lalitpur. For the last
+        several years I owned a payments-and-compliance module at Paylocity, holding it to 99.99%
+        reliability as it grew. Along the way I've shipped things solo too: a municipal tax SaaS in
+        Nepal and a privacy-first browser toolkit. Now I'm in Brisbane, looking for the next team
+        to do that kind of work with.
       </p>
     </div>
-
-    {/* Optional photo — strongly recommended to humanise the page */}
-    {/* TODO: add <Image /> of yourself here once available */}
 
     <h2 class="font-display text-2xl mt-12">Journey</h2>
     <div class="mt-6">
@@ -67,8 +69,9 @@ const personSchema = {
 
     <h2 class="font-display text-2xl mt-12">Right now</h2>
     <p class="text-muted mt-4">
-      {SITE.status}. {/* TODO: what kind of role/team/problem you're looking for */}
-      Reach me at
+      I'm based in Brisbane with full working rights in Australia, and open to senior backend or
+      full-stack roles — ideally a team that cares about reliability and lets engineers own real
+      problems end to end. I'm happy working remotely or on-site. Reach me at
       <a href={`mailto:${SITE.email}`} class="text-coral hover:underline">{SITE.email}</a>
       or see <a href={href('/resume')} class="text-coral hover:underline">my resume</a>.
     </p>
