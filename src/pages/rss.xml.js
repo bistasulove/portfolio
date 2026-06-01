@@ -16,7 +16,7 @@ export async function GET(context) {
       description: post.data.description,
       pubDate: post.data.publishDate,
       categories: post.data.tags,
-      // Include the base path so links resolve under /portfolio.
+      // Build the link through href() so the base path is always applied.
       link: href(`/writing/${post.id}/`),
     })),
   });

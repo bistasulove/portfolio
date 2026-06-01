@@ -1,7 +1,7 @@
 # Portfolio & Blog — Sulav Raj Bista
 
 The source for my personal portfolio, project case studies, and technical blog.
-Live at **<https://bistasulove.github.io/portfolio/>**.
+Live at **<https://sulove.dev>**.
 
 It's a content-driven static site: a home page, in-depth project case studies
 (`/work`), a writing/blog section (`/writing`), an about page, an inline résumé
@@ -65,16 +65,16 @@ npm install
 npm run dev
 ```
 
-> **Note on the base path:** the site is configured with `base: '/portfolio'`
-> (it deploys to a GitHub Pages subpath), so the local dev site lives at
-> **<http://localhost:4321/portfolio>**, not the bare root. Always build internal
-> links with the `href()` helper in `src/consts.ts` rather than hardcoding paths.
+> **Internal links:** the site serves from the root (`base: '/'`) on the custom
+> domain. Always build internal links with the `href()` helper in `src/consts.ts`
+> rather than hardcoding paths — it keeps links correct even if the base path
+> changes (e.g. moving back to a subpath).
 
 ### Commands
 
 | Command | Action |
 | --- | --- |
-| `npm run dev` | Start the local dev server at `localhost:4321/portfolio` |
+| `npm run dev` | Start the local dev server at `localhost:4321` |
 | `npm run build` | Build the production site to `./dist/` |
 | `npm run preview` | Preview the production build locally |
 | `npm run astro ...` | Run Astro CLI commands (`astro check`, `astro add`, …) |
@@ -99,6 +99,6 @@ public/              # Static assets (incl. resume.pdf)
 ## Deployment
 
 Every push to `master` triggers a GitHub Actions workflow that builds the site
-and publishes `./dist/` to GitHub Pages. Configuration lives in
-`astro.config.mjs` (`site` + `base`) — if a custom domain is added later, set
-`base` to `'/'` and point `site` at the domain.
+and publishes `./dist/` to GitHub Pages. The site is served from the custom
+domain **sulove.dev**: `astro.config.mjs` sets `site: 'https://sulove.dev'` and
+`base: '/'`, and `public/CNAME` tells GitHub Pages which domain to serve.

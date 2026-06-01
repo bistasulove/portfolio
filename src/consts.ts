@@ -177,8 +177,8 @@ export const PROJECTS: ResumeProject[] = [
 ];
 
 /**
- * Prefix an internal path with the configured base path so links work both
- * locally and under the GitHub Pages subpath (/portfolio).
+ * Prefix an internal path with the configured base path so links stay correct
+ * regardless of where the site is mounted (root on sulove.dev, or a subpath).
  */
 export function href(path: string): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');

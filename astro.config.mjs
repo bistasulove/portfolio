@@ -7,12 +7,12 @@ import sitemap from '@astrojs/sitemap';
 
 import { remarkReadingTime } from './src/plugins/remark-reading-time.mjs';
 
-// Deployed to GitHub Pages under the `portfolio` repo, so the site lives at a
-// subpath. When a custom domain is added later, set `site` to it and `base` to '/'.
+// Deployed to GitHub Pages on the custom domain sulove.dev, so the site lives at
+// the root. The CNAME file in public/ tells GitHub Pages which domain to serve.
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://bistasulove.github.io',
-  base: '/portfolio',
+  site: 'https://sulove.dev',
+  base: '/',
 
   vite: {
     plugins: [tailwindcss()],
