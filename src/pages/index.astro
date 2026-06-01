@@ -1,24 +1,79 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { SITE, TECH_TAGS } from '../consts';
+import Hero from '../components/Hero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Timeline from '../components/Timeline.astro';
+import PostMeta from '../components/PostMeta.astro';
+import { SITE, href } from '../consts';
+
+const featured = (await getCollection('projects', (p) => !p.data.draft && p.data.featured)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const latestPosts = (await getCollection('posts', (p) => !p.data.draft))
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 2);
 ---
 
 <BaseLayout>
-  <section class="max-w-4xl mx-auto px-5 py-20">
-    <p class="font-mono text-sm text-coral">// {SITE.location} · {SITE.status}</p>
-    <h1 class="font-display text-5xl sm:text-6xl mt-4 leading-tight">
-      I build backends that don't break.
-    </h1>
-    <p class="text-lg text-muted max-w-2xl mt-6">
-      {SITE.role} with 7+ years shipping reliable systems — from solo end-to-end SaaS
-      to multi-tenant platforms. {/* TODO: refine subheading */}
+  <Hero />
+
+  {
+    featured.length > 0 && (
+      <section id="work" class="max-w-4xl mx-auto px-5 py-12 border-t border-border">
+        <div class="flex items-baseline justify-between">
+          <h2 class="font-display text-2xl">Featured Work</h2>
+          <a href={href('/work')} class="text-sm text-coral hover:underline">All projects →</a>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mt-6">
+          {featured.map((p) => (
+            <ProjectCard slug={p.id} title={p.data.title} pitch={p.data.pitch} tech={p.data.tech} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="max-w-4xl mx-auto px-5 py-12 border-t border-border">
+    <h2 class="font-display text-2xl">Career</h2>
+    <div class="mt-6">
+      <Timeline variant="horizontal" />
+    </div>
+  </section>
+
+  {
+    latestPosts.length > 0 && (
+      <section class="max-w-4xl mx-auto px-5 py-12 border-t border-border">
+        <div class="flex items-baseline justify-between">
+          <h2 class="font-display text-2xl">Latest Writing</h2>
+          <a href={href('/writing')} class="text-sm text-coral hover:underline">All posts →</a>
+        </div>
+        <ul class="mt-6 space-y-5">
+          {latestPosts.map((post) => (
+            <li>
+              <a href={href(`/writing/${post.id}`)} class="group block">
+                <h3 class="font-display text-xl group-hover:text-coral transition-colors">
+                  {post.data.title}
+                </h3>
+                <p class="text-muted text-sm mt-1">{post.data.description}</p>
+                <div class="mt-2">
+                  <PostMeta publishDate={post.data.publishDate} readingTime={post.data.readingTime} />
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section class="max-w-4xl mx-auto px-5 py-12 border-t border-border">
+    <h2 class="font-display text-2xl">On GitHub</h2>
+    <p class="text-muted mt-3">
+      {/* TODO Phase 4: embed contribution graph; static link for now */}
+      Open source work and pinned repositories live on
+      <a href={SITE.github} class="text-coral hover:underline">GitHub</a>.
     </p>
-    <ul class="flex flex-wrap gap-2 mt-6 font-mono text-xs">
-      {
-        TECH_TAGS.map((t) => (
-          <li class="bg-coral-tint text-coral rounded-md px-2 py-0.5">{t}</li>
-        ))
-      }
-    </ul>
   </section>
 </BaseLayout>

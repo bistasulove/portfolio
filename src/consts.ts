@@ -23,6 +23,36 @@ export const NAV_LINKS = [
 
 export const TECH_TAGS = ['python', 'django', 'aws', 'docker', 'kafka', 'react'] as const;
 
+// TODO: replace every entry with real roles, companies, dates, and the one key
+// thing built there. Order newest-first.
+export interface CareerEntry {
+  period: string;
+  role: string;
+  company: string;
+  highlight: string;
+}
+
+export const CAREER: CareerEntry[] = [
+  {
+    period: '2022 — Present',
+    role: 'Senior Backend Engineer',
+    company: 'TODO Company',
+    highlight: 'TODO: the single most impressive thing you built here.',
+  },
+  {
+    period: '2019 — 2022',
+    role: 'Backend Engineer',
+    company: 'TODO Company',
+    highlight: 'TODO: key system or feature you owned.',
+  },
+  {
+    period: '2017 — 2019',
+    role: 'Software Engineer',
+    company: 'TODO Company',
+    highlight: 'TODO: where it started.',
+  },
+];
+
 /**
  * Prefix an internal path with the configured base path so links work both
  * locally and under the GitHub Pages subpath (/portfolio).

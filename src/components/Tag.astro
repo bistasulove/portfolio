@@ -1,0 +1,11 @@
+---
+// Mono pill — coral tint bg, coral text (CLAUDE.md §3 component rules).
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+---
+
+<span class="font-mono text-xs bg-coral-tint text-coral rounded-md px-2 py-0.5">
+  {label}
+</span>

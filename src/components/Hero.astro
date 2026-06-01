@@ -1,0 +1,38 @@
+---
+import Tag from './Tag.astro';
+import { SITE, TECH_TAGS, href } from '../consts';
+---
+
+<section class="max-w-4xl mx-auto px-5 pt-20 pb-16">
+  <p class="font-mono text-sm text-coral">// {SITE.location} · {SITE.status}</p>
+
+  <h1 class="font-display text-5xl sm:text-6xl mt-4 leading-[1.05] max-w-3xl">
+    {/* TODO: make this yours — punchy and specific */}
+    I build backends that don't break.
+  </h1>
+
+  <p class="text-lg text-muted max-w-2xl mt-6">
+    {/* TODO: 2-line subheading — who you are + what you're looking for */}
+    {SITE.role} with 7+ years shipping reliable systems — from solo end-to-end SaaS to
+    multi-tenant platforms. Currently open to senior backend roles.
+  </p>
+
+  <ul class="flex flex-wrap gap-2 mt-6">
+    {TECH_TAGS.map((t) => <li><Tag label={t} /></li>)}
+  </ul>
+
+  <div class="flex flex-wrap items-center gap-3 mt-8">
+    <a
+      href={href('/resume')}
+      class="bg-coral hover:bg-coral-deep text-white rounded-lg px-4 py-2 text-sm font-medium transition-colors"
+    >
+      View Resume
+    </a>
+    <a
+      href="#work"
+      class="border border-border hover:border-coral text-primary rounded-lg px-4 py-2 text-sm font-medium transition-colors"
+    >
+      See my work ↓
+    </a>
+  </div>
+</section>
