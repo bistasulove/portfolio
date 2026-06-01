@@ -1,0 +1,79 @@
+@import 'tailwindcss';
+
+/* Enable class-based dark mode (toggle by adding `.dark` to <html>). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Semantic tokens — these swap under .dark. Coral stays constant.
+   See CLAUDE.md §3 (Design System).
+--------------------------------------------------------------------------- */
+:root {
+  --coral: #d85a30;
+  --coral-deep: #993c1d;
+  --coral-tint: #faece7;
+
+  --bg-warm: #f6f4f0;
+  --surface: #ffffff;
+  --text-primary: #2c2c2a;
+  --text-muted: #888780;
+  --border: #e0ddd8;
+}
+
+.dark {
+  --coral-tint: #3a241c;
+
+  --bg-warm: #1a1916;
+  --surface: #232220;
+  --text-primary: #f0ede8;
+  --text-muted: #a3a199;
+  --border: #36342f;
+}
+
+/* ---------------------------------------------------------------------------
+   Map tokens into Tailwind's theme so utilities exist:
+   bg-warm, bg-surface, text-primary, text-muted, border-border,
+   bg-coral, text-coral, font-display / font-sans / font-mono, etc.
+   `inline` keeps the var() reference so .dark overrides work at runtime.
+--------------------------------------------------------------------------- */
+@theme inline {
+  --color-coral: var(--coral);
+  --color-coral-deep: var(--coral-deep);
+  --color-coral-tint: var(--coral-tint);
+  --color-warm: var(--bg-warm);
+  --color-surface: var(--surface);
+  --color-primary: var(--text-primary);
+  --color-muted: var(--text-muted);
+  --color-border: var(--border);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ---------------------------------------------------------------------------
+   Base layer
+--------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-warm);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  ::selection {
+    background-color: var(--coral);
+    color: #fff;
+  }
+}
