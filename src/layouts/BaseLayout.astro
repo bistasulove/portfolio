@@ -2,21 +2,28 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { SITE } from '../consts';
+import { SITE, href } from '../consts';
 
 interface Props {
   title?: string;
   description?: string;
   /** Path to an OG image (absolute or site-relative). Optional. */
   ogImage?: string;
+  /** Optional JSON-LD structured data object (rendered as ld+json). */
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description = SITE.description, ogImage } = Astro.props;
+const {
+  title,
+  description = SITE.description,
+  ogImage = href('/og/default.png'),
+  jsonLd,
+} = Astro.props;
 const pageTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} · ${SITE.role}`;
 
 // Canonical + OG URLs (Astro.site is set in astro.config.mjs).
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : undefined;
+const ogImageUrl = new URL(ogImage, Astro.site).href;
 ---
 
 <!doctype html>
@@ -24,19 +31,28 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : undefined;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={href('/favicon.svg')} />
 
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${SITE.name} — Writing`}
+      href={href('/rss.xml')}
+    />
+    <link rel="sitemap" href={href('/sitemap-index.xml')} />
 
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
-    <meta name="twitter:card" content={ogImageUrl ? 'summary_large_image' : 'summary'} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Fonts: preconnect + display:swap for performance (CLAUDE.md §8) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,6 +61,8 @@ const ogImageUrl = ogImage ? new URL(ogImage, Astro.site).href : undefined;
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@700&display=swap"
     />
+
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
     <meta name="generator" content={Astro.generator} />
   </head>

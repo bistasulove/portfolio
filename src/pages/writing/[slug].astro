@@ -4,7 +4,8 @@ import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostMeta from '../../components/PostMeta.astro';
 import Tag from '../../components/Tag.astro';
-import { href } from '../../consts';
+import Giscus from '../../components/Giscus.astro';
+import { SITE, href } from '../../consts';
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection('posts', (p) => !p.data.draft);
@@ -23,9 +24,22 @@ const readingTime = remarkPluginFrontmatter.minutesRead as number | undefined;
 
 // Build a table of contents from h2/h3 headings.
 const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+
+const ogImage = href(`/og/posts/${post.id}.png`);
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: publishDate.toISOString(),
+  keywords: tags.join(', '),
+  image: new URL(ogImage, Astro.site).href,
+  url: new URL(href(`/writing/${post.id}`), Astro.site).href,
+  author: { '@type': 'Person', name: SITE.name },
+};
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} ogImage={ogImage} jsonLd={articleSchema}>
   <article class="max-w-2xl mx-auto px-5 py-16">
     <a href={href('/writing')} class="font-mono text-xs text-muted hover:text-coral">← Writing</a>
 
@@ -58,6 +72,6 @@ const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
       <Content />
     </div>
 
-    {/* TODO Phase 4: Giscus comments mount here */}
+    <Giscus />
   </article>
 </BaseLayout>

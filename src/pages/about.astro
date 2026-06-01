@@ -10,9 +10,24 @@ const values = [
   'Ship, measure, then optimise — in that order.',
   'Own the problem end to end, not just the ticket.',
 ];
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.name,
+  jobTitle: SITE.role,
+  email: `mailto:${SITE.email}`,
+  url: new URL(href('/about'), Astro.site).href,
+  sameAs: [SITE.github, SITE.linkedin],
+  address: { '@type': 'PostalAddress', addressLocality: SITE.location },
+};
 ---
 
-<BaseLayout title="About" description={`About ${SITE.name} — career journey, values, and what I'm looking for.`}>
+<BaseLayout
+  title="About"
+  description={`About ${SITE.name} — career journey, values, and what I'm looking for.`}
+  jsonLd={personSchema}
+>
   <article class="max-w-2xl mx-auto px-5 py-16">
     <h1 class="font-display text-4xl">About</h1>
 

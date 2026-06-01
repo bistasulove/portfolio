@@ -14,6 +14,16 @@ export const SITE = {
   linkedin: 'https://www.linkedin.com/in/', // TODO
 } as const;
 
+// Giscus comments (GitHub Discussions). Enable Discussions on the repo, then get
+// repoId + categoryId from https://giscus.app and paste them here. Until both are
+// filled in, the comments section renders nothing.
+export const GISCUS = {
+  repo: 'bistasulove/portfolio',
+  repoId: 'R_kgDOStsiIQ',
+  category: 'General',
+  categoryId: 'DIC_kwDOStsiIc4C-RMf',
+} as const;
+
 export const NAV_LINKS = [
   { label: 'Work', href: '/work' },
   { label: 'Writing', href: '/writing' },

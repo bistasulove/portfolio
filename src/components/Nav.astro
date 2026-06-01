@@ -1,16 +1,20 @@
 ---
 import { SITE, NAV_LINKS, href } from '../consts';
 
-const current = Astro.url.pathname.replace(import.meta.env.BASE_URL, '/').replace(/\/$/, '') || '/';
+// Strip the base prefix and any trailing slash to compare against link paths.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+let current = Astro.url.pathname;
+if (base && current.startsWith(base)) current = current.slice(base.length);
+current = current.replace(/\/$/, '') || '/';
 const isActive = (path: string) => current === path || current.startsWith(`${path}/`);
 ---
 
 <header class="border-b border-border">
-  <nav class="max-w-4xl mx-auto px-5 h-16 flex items-center justify-between">
-    <a href={href('/')} class="font-display text-xl font-bold tracking-tight">
+  <nav class="max-w-4xl mx-auto px-5 h-16 flex items-center justify-between gap-3">
+    <a href={href('/')} class="font-display text-lg sm:text-xl font-bold tracking-tight whitespace-nowrap">
       {SITE.name}
     </a>
-    <ul class="flex items-center gap-5 text-sm">
+    <ul class="flex items-center gap-4 sm:gap-5 text-sm">
       {
         NAV_LINKS.map((link) => (
           <li>
