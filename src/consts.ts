@@ -23,6 +23,45 @@ export const GISCUS = {
   categoryId: 'DIC_kwDOStsiIc4C-RMf',
 } as const;
 
+// GitHub username, used for the contribution graph + profile links.
+export const GITHUB_USERNAME = 'bistasulove';
+
+export interface Repo {
+  name: string;
+  description: string;
+  language: string;
+  url: string;
+}
+
+// Pinned repositories shown in the "On GitHub" section. Public repos only.
+// Edit freely — descriptions/languages are hand-maintained, not fetched.
+export const PINNED_REPOS: Repo[] = [
+  {
+    name: 'pantry-run',
+    description: 'Real-time, offline-first shopping-list PWA for households.',
+    language: 'TypeScript',
+    url: 'https://github.com/bistasulove/pantry-run',
+  },
+  {
+    name: 'banshawali-frontend',
+    description: 'Interactive family-tree UI built with React Flow.',
+    language: 'TypeScript',
+    url: 'https://github.com/bistasulove/banshawali-frontend',
+  },
+  {
+    name: 'banshawali-backend',
+    description: 'Multi-tenant genealogy API on Django REST Framework.',
+    language: 'Python',
+    url: 'https://github.com/bistasulove/banshawali-backend',
+  },
+  {
+    name: 'portfolio',
+    description: 'This site — built with Astro and Tailwind CSS.',
+    language: 'Astro',
+    url: 'https://github.com/bistasulove/portfolio',
+  },
+];
+
 export const NAV_LINKS = [
   { label: 'Work', href: '/work' },
   { label: 'Writing', href: '/writing' },
@@ -49,7 +88,7 @@ export const CAREER: CareerEntry[] = [
   {
     period: 'Jul 2021 — Mar 2026',
     role: 'Senior Software Engineer',
-    company: 'Paylocity',
+    company: 'Airbase (acquired by Paylocity)',
     location: 'Remote',
     highlight:
       'Technical owner of the Vendor Management module - auth, onboarding, tax compliance, and payments — held to 99.99% success at p95 < 700ms.',

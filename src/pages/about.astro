@@ -8,6 +8,16 @@ const values = [
   'Write the code the next engineer can read at 2am.',
   'Ship, measure, then optimise — in that order.',
   'Own the problem end to end, not just the ticket.',
+  'Hold your opinions strongly, but loosely.',
+];
+
+const interests = [
+  'Football — the proper kind, not the Aussie sort — though I haven’t played nearly enough since moving to Brisbane.',
+  'Mobile Legends when I want to switch my brain off, and a side project when I don’t.',
+  'Travelling, movies, and eating my way through Nepali, Indian, and Italian food.',
+  'Coffee — black, no sugar. Non-negotiable.',
+  'Keeping home close: cooking Nepali food, speaking the language with our community, and showing up for every festival.',
+  'Right now I’m tinkering with MCP and AI agents, sharpening my frontend, and hunting for small Australian tech problems worth open-sourcing a fix for.',
 ];
 
 const personSchema = {
@@ -24,29 +34,145 @@ const personSchema = {
 
 <BaseLayout
   title="About"
-  description={`About ${SITE.name} — career journey, values, and what I'm looking for.`}
+  description={`About ${SITE.name} — from Bharatpur to Bangalore to Brisbane: the story behind the engineer.`}
   jsonLd={personSchema}
 >
   <article class="max-w-2xl mx-auto px-5 py-16">
     <h1 class="font-display text-4xl">About</h1>
+    <p class="font-mono text-sm text-coral mt-3">// Bharatpur → Bangalore → Brisbane</p>
 
     {/* Intro — warm, personal, not a resume summary */}
-    <div class="prose-custom mt-6 space-y-4 text-primary leading-relaxed">
+    <div class="mt-8 sm:flex sm:gap-7 sm:items-start">
+      {/* Portrait — drop a photo at public/sulav.jpg (see Claude's note). */}
+      <img
+        src={href('/sulav.jpg')}
+        alt={SITE.name}
+        width="160"
+        height="192"
+        class="w-40 h-48 object-cover rounded-xl border border-border mb-6 sm:mb-0 shrink-0"
+      />
+      <div class="prose-custom space-y-4 text-primary leading-relaxed">
+        <p>
+          I'm {SITE.name}, a software engineer in {SITE.location} — though I got here the long way,
+          through Nepal and India. Most of my career has been about owning a hard problem end to end:
+          the vendor management systems that have to work at 2am, the onboarding flow that
+          stops being a support ticket, the alert that fires before a customer notices.
+        </p>
+        <p>
+          But underneath the senior-engineer resume I'm still the curious kid from Bharatpur who
+          walked to a cyber cafe to play Farmville and came home wanting to know how all of it
+          actually worked. This is the longer, more honest version of that story.
+        </p>
+      </div>
+    </div>
+
+    <h2 class="font-display text-2xl mt-14">Bharatpur</h2>
+    <div class="prose-custom mt-5 space-y-4 text-primary leading-relaxed">
       <p>
-        I'm {SITE.name}, a software engineer in {SITE.location}. I like the unglamorous parts of
-        the job — the system that quietly handles peak traffic at 2am, the onboarding flow that
-        stops being a support ticket, the alert that fires before a customer notices. Most of my
-        career has been about owning a hard problem end to end, and being the person other teams
-        escalate to when it matters.
+        I grew up in Bharatpur, in Nepal's Chitwan district — sunny, hot, and half-village back
+        then, though it's a proper city now. Home was six of us: my parents, my grandparents, my
+        younger brother, and me, with my father, a government employee, as the main earner. I was a
+        curious kid more than a studious one. Computers arrived in stages - first in 2008, around
+        sixth grade, as trips to the local cyber cafe to play Farmville on this new thing called
+        Facebook; then in 2010, when we got our first computer at home and I could finally poke at
+        the internet on my own terms and break things to see how they worked.
+      </p>
+    </div>
+
+    <h2 class="font-display text-2xl mt-12">Bangalore, on a scholarship</h2>
+    <div class="prose-custom mt-5 space-y-4 text-primary leading-relaxed">
+      <p>
+        Engineering took me to India. I sat an entrance exam run by EdCIL - a body under India's
+        Ministry of Education - and placed 34th out of more than 5,000 students, which earned me a
+        full scholarship to Ramaiah Institute of Technology in Bangalore: tuition, accommodation,
+        food, all of it. For a kid from Bharatpur that was an enormous door to walk through. Leaving
+        home that young stung a little, but I've always been single-minded about a goal, and
+        Bangalore wasn't really that far away. It turned out to be some of the best years of my
+        life - a hostel full of friends from Nepal and India, and the kind of memories you only make
+        living away from home for the first time.
+      </p>
+    </div>
+
+    <h2 class="font-display text-2xl mt-12">How I actually became an engineer</h2>
+    <div class="prose-custom mt-5 space-y-4 text-primary leading-relaxed">
+      <p>
+        Here's the part most resumes hide: I didn't plan to be a backend engineer at all. The plan
+        was a Master's in the US, so I skipped campus placements entirely to focus on the GRE - and
+        then promptly procrastinated my way to the end of final year with no test score and no job.
+        With the good companies already gone, I grabbed the one offer still on the table, at a
+        company called Odessa, mostly to stop the year going to waste. The job itself wasn't for me,
+        but the first three months - the training cohort were golden, and I made friends there that 
+        would shape my career. I am still in touch with some of them.
       </p>
       <p>
-        I grew up in Nepal and went to India for my engineering degree, then spent my early career
-        in Bangalore building fintech and SaaS products — improving OCR pipelines and shipping
-        payment services at Fyle, then leading backend work back home in Lalitpur. For the last
-        several years I owned a payments-and-compliance module at Paylocity, holding it to 99.99%
-        reliability as it grew. Along the way I've shipped things solo too: a municipal tax SaaS in
-        Nepal and a privacy-first browser toolkit. Now I'm in Brisbane, looking for the next team
-        to do that kind of work with.
+        When a close friend left Odessa for a startup called Fyle, I quit too, telling myself I'd
+        finally study for the GRE. Reality arrived fast: no salary, bills stacking up, real panic.
+        So I taught myself Django, day and night, through the start of 2019 — and that's the moment I
+        fell into the Python world I've lived in ever since. Then that same friend called to rave
+        about Fyle's culture and mention they were hiring. I couldn't help myself: I took the
+        referral, cleared the interviews, and joined.
+      </p>
+      <p>
+        At Fyle I started on the machine-learning team, on a feature that guessed a receipt's
+        category. It was early and rough - trained on too little data, accuracy embarrassingly low.
+        But the data kept coming, and a team of part-time labellers had hand-labelled thousands of
+        receipts I could trust as ground truth. I retrained the model, reworked the logic, and pushed
+        US-receipt accuracy from around 35% to 95%. (Indian receipts were stubborner - still around
+        65% when I moved on to the Corporate Cards team.) Fyle was a high-growth startup, which meant
+        I did a bit of everything: bugs, Kubernetes logs at 2am, design docs, microservices at scale.
+        I grew up as an engineer there.
+      </p>
+    </div>
+
+    <h2 class="font-display text-2xl mt-12">Home during the pandemic</h2>
+    <div class="prose-custom mt-5 space-y-4 text-primary leading-relaxed">
+      <p>
+        I still had my eyes on the US, but the pandemic closed that door. Stuck, I decided to go back
+        to Nepal for a while and regroup - which is how I ended up spending 14 days quarantining in
+        my own house. Around then, a former Fyle colleague (a fellow Nepali I'd referred there) told
+        me about a founder in Lalitpur building an ad-serving platform who needed a Python engineer
+        to build the engine behind it. The idea was neat: publishers create ad campaigns, websites
+        drop in a small JS snippet, and an ad loads dynamically wherever they place our div — with
+        click and impression tracking, and the business taking a margin on impressions in between.
+        There was one frontend developer building the dashboards in Node and React, and then me,
+        building the serving engine. I was the only backend engineer on it, so I gave myself the
+        title "Lead" - half a joke, half just accurate.
+      </p>
+    </div>
+
+    <h2 class="font-display text-2xl mt-12">Going remote, and an acquisition</h2>
+    <div class="prose-custom mt-5 space-y-4 text-primary leading-relaxed">
+      <p>
+        I built the MVP and it worked, but the founder struggled to land real customers — a
+        two-sided ad marketplace is hard to start cold — and the role drifted toward part-time. With
+        no security there and the US plan now behind me, my priorities had shifted; I wanted
+        something stable and remote. Another old Fyle colleague had joined Airbase, a fully-remote
+        fintech in the same world as Fyle but more structured and, honestly, with an even better
+        culture. I got the referral, joined as a mid-level engineer, and was promoted to senior. In
+        late 2024 Airbase was acquired by Paylocity — and that's how I ended up there.
+      </p>
+      <p>
+        By then I was the longest-tenured engineer on the Vendor Management team. I'd been there when
+        it was 120 people; it was 250 by 2024. The PMs who'd made the early calls had moved on, so
+        when someone needed to know why a legacy system behaved the way it did, the answer was
+        usually me. Being that source of truth - the person other teams escalate to when it matters —
+        is the part of the work I'm proudest of.
+      </p>
+    </div>
+
+    <h2 class="font-display text-2xl mt-12">Brisbane, a fresh start</h2>
+    <div class="prose-custom mt-5 space-y-4 text-primary leading-relaxed">
+      <p>
+        In July 2025 my wife and I moved to Brisbane for a genuine fresh start, as she pursues her
+        Master's here. Having my sister already in Brisbane made the landing far softer, and an
+        arrangement to keep working for Paylocity from Australia kept things steady while we found
+        our feet.
+      </p>
+      <p>
+        I worked with Paylocity through November 2025. Since then I've been doing the real-life
+        things between chapters: building side projects that actually mean something to me, picking
+        up part-time work in aged care to keep the lights on, and grinding LeetCode for the
+        interviews ahead. Now I'm looking for the next team to build with.
       </p>
     </div>
 
@@ -56,6 +182,18 @@ const personSchema = {
     </div>
 
     <h2 class="font-display text-2xl mt-12">How I work</h2>
+    <div class="prose-custom mt-5 space-y-4 text-primary leading-relaxed">
+      <p>
+        What pulls me to this work is taking something abstract — a vague idea, a messy problem — and
+        turning it into a thing that actually runs. The grind of fighting a hard constraint for hours
+        or days, and then the moment the build goes green and it just <em>works</em>: that payoff
+        never gets old. I'm less fond of where ambitious design meets rigid reality — tight budgets,
+        legacy limitations, shifting timelines — and the unwritten rule that an engineer is never
+        allowed to stop upskilling. (You rarely see accountants doing accounting for fun on the
+        weekend; some days I think a sharp problem-solver with real experience should be allowed to
+        be enough.) But those tensions are the job, and working within them is most of the craft.
+      </p>
+    </div>
     <ul class="mt-6 space-y-3">
       {
         values.map((v) => (
@@ -67,13 +205,48 @@ const personSchema = {
       }
     </ul>
 
-    <h2 class="font-display text-2xl mt-12">Right now</h2>
-    <p class="text-muted mt-4">
-      I'm based in Brisbane with full working rights in Australia, and open to senior backend or
-      full-stack roles — ideally a team that cares about reliability and lets engineers own real
-      problems end to end. I'm happy working remotely or on-site. Reach me at
-      <a href={`mailto:${SITE.email}`} class="text-coral hover:underline">{SITE.email}</a>
-      or see <a href={href('/resume')} class="text-coral hover:underline">my resume</a>.
-    </p>
+    <h2 class="font-display text-2xl mt-12">What I'm working on in myself</h2>
+    <div class="prose-custom mt-5 space-y-4 text-primary leading-relaxed">
+      <p>
+        If you scroll my GitHub you'll find abandoned projects — and they're not the only graveyard.
+        Over the years I've started TikTok accounts, YouTube channels, even little online businesses,
+        and walked away from most of them. My wife has my number on this: “You work hard when there's
+        no traction,” she says, “but the moment it starts working, you decide it takes too long and
+        quit.” Consistency is the thing I'm actively working on. (Time management used to be the
+        bigger problem; I've mostly got that one now.) This site is part of the fix — I'd wanted a
+        portfolio for years and kept putting it off. So I built it. It's here. That counts for
+        something.
+      </p>
+    </div>
+
+    <h2 class="font-display text-2xl mt-12">Outside the terminal</h2>
+    <ul class="mt-6 space-y-3">
+      {
+        interests.map((item) => (
+          <li class="flex gap-3">
+            <span class="text-coral mt-1">—</span>
+            <span class="text-primary">{item}</span>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2 class="font-display text-2xl mt-12">What I'm looking for</h2>
+    <div class="prose-custom mt-5 space-y-4 text-primary leading-relaxed">
+      <p>
+        What I want next isn't a title — it's the responsibility. (Not junior pay for a senior load;
+        I mean real ownership of real problems.) I do my best work somewhere with a genuinely good
+        culture: engineering decisions made collaboratively, a team that isn't bogged down in
+        process, hybrid and humane on work-life balance, where everyone's opinion is heard and held
+        loosely. I think I shine in places like that, because that's just how I'm wired.
+      </p>
+      <p>
+        If that sounds like your team — or you just want to swap notes on Python, Django, or
+        keeping systems alive at 2am — I'd genuinely love to hear from you. Email me at
+        <a href={`mailto:${SITE.email}`} class="text-coral hover:underline">{SITE.email}</a>, find
+        me on <a href={SITE.linkedin} class="text-coral hover:underline">LinkedIn</a>, or have a
+        look at <a href={href('/resume')} class="text-coral hover:underline">my resume</a>.
+      </p>
+    </div>
   </article>
 </BaseLayout>

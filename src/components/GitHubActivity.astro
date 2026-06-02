@@ -1,0 +1,54 @@
+---
+import { SITE, GITHUB_USERNAME, PINNED_REPOS } from '../consts';
+
+// Language → dot colour, mirroring GitHub's own palette. Falls back to muted.
+const langColors: Record<string, string> = {
+  TypeScript: '#3178c6',
+  JavaScript: '#f1e05a',
+  Python: '#3572A5',
+  Astro: '#ff5d01',
+  HTML: '#e34c26',
+  CSS: '#563d7c',
+};
+
+// ghchart renders a coral-tinted contribution graph as an SVG image — no API
+// key, no rate limit. Coral matches the design token (--coral, #D85A30).
+const chartUrl = `https://ghchart.rshah.org/D85A30/${GITHUB_USERNAME}`;
+---
+
+<section class="max-w-4xl mx-auto px-5 py-12 border-t border-border">
+  <div class="flex items-baseline justify-between">
+    <h2 class="font-display text-2xl">On GitHub</h2>
+    <a href={SITE.github} class="text-sm text-coral hover:underline">@{GITHUB_USERNAME} →</a>
+  </div>
+
+  <div class="mt-6 bg-white border border-border rounded-xl p-4 overflow-x-auto">
+    <img
+      src={chartUrl}
+      alt={`${SITE.name}'s GitHub contribution graph over the past year`}
+      loading="lazy"
+      class="min-w-[680px] w-full"
+    />
+  </div>
+
+  <div class="grid sm:grid-cols-2 gap-4 mt-4">
+    {
+      PINNED_REPOS.map((repo) => (
+        <a
+          href={repo.url}
+          class="group block bg-surface border border-border rounded-xl p-5 transition-colors hover:border-coral"
+        >
+          <h3 class="font-mono text-sm group-hover:text-coral transition-colors">{repo.name}</h3>
+          <p class="text-muted text-sm mt-2">{repo.description}</p>
+          <div class="flex items-center gap-2 mt-4 text-xs text-muted">
+            <span
+              class="inline-block w-2.5 h-2.5 rounded-full"
+              style={`background:${langColors[repo.language] ?? '#888780'}`}
+            />
+            {repo.language}
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>

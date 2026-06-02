@@ -4,7 +4,7 @@ pitch: 'A family-tree management app — multi-tenant by design, with an interac
 description: 'A solo-built family-tree (genealogy) platform: shared-schema multi-tenancy so each family stays isolated, an interactive React Flow tree, and a data model that grapples with how lineage actually works.'
 tech: ['Django REST Framework', 'React', 'React Flow', 'PostgreSQL', 'JWT', 'AWS']
 order: 4
-featured: false
+featured: true
 draft: false
 ---
 
