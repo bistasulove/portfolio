@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
+import mermaid from 'astro-mermaid';
 
 import { remarkReadingTime } from './src/plugins/remark-reading-time.mjs';
 
@@ -26,5 +27,15 @@ export default defineConfig({
     },
   },
 
-  integrations: [mdx(), sitemap()],
+  // astro-mermaid must come BEFORE mdx so it can transform ```mermaid blocks
+  // before markdown processing. autoTheme switches the diagram theme to match
+  // the site's light/dark mode (html[data-theme]).
+  integrations: [
+    mermaid({
+      theme: 'neutral',
+      autoTheme: true,
+    }),
+    mdx(),
+    sitemap(),
+  ],
 });
