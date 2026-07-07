@@ -121,7 +121,7 @@ export const CAREER: CareerEntry[] = [
   {
     period: 'Feb 2019 — Oct 2020',
     role: 'Software Development Engineer II',
-    company: 'Fyle Inc',
+    company: 'Fyle (acquired by Sage)',
     location: 'Bangalore, India',
     highlight:
       'Lifted OCR receipt-classification accuracy from 35% to 95% and shipped a secure ACH payment service with micro-deposit verification.',
