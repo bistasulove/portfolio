@@ -3,7 +3,7 @@ title: 'EZTax Nepal'
 pitch: 'A production SaaS for municipal advertisement-tax collection — built solo, and later re-platformed off AWS to cut costs.'
 description: 'How I designed, built, and shipped a government-adjacent tax-management SaaS for a private collection firm in Nepal — owning everything from the data model to the infrastructure, including a later migration from AWS to a lean self-hosted stack.'
 tech: ['Django REST Framework', 'React', 'PostgreSQL', 'AWS', 'Hetzner', 'Cloudflare']
-order: 2
+order: 3
 featured: true
 liveUrl: 'https://eztaxnepal.com/'
 draft: false

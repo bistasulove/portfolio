@@ -3,7 +3,7 @@ title: 'Pantry Run'
 pitch: 'A real-time, offline-first shopping-list PWA for households — built to solve a problem in my own kitchen, and now used by a handful of families.'
 description: 'A collaborative shopping-list PWA for households: instant real-time sync, offline-first writes, timezone-correct recurring reminders, and pragmatic LLM categorization — built solo on the modern Next.js + Supabase stack.'
 tech: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'PWA']
-order: 1
+order: 2
 featured: true
 liveUrl: 'https://pantry-run.vercel.app/'
 githubUrl: 'https://github.com/bistasulove/pantry-run'

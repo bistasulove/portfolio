@@ -3,7 +3,7 @@ title: 'ImagePal'
 pitch: 'A privacy-first image & PDF toolkit that does all its processing in the browser — your files never touch a server.'
 description: 'A static Next.js toolkit with nine image and PDF tools, built around an off-main-thread processing pipeline so everything runs locally — no accounts, no uploads, no trackers.'
 tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Web Workers', 'pdf-lib', 'Cloudflare Pages']
-order: 3
+order: 4
 featured: true
 liveUrl: 'https://imagepal.app/'
 draft: false
