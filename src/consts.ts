@@ -182,6 +182,17 @@ export interface ResumeProject {
 // src/content/projects/. Keep ordering consistent with the featured work order.
 export const PROJECTS: ResumeProject[] = [
   {
+    name: 'HoneyDjango',
+    year: '2026',
+    slug: 'honeydj',
+    tagline: 'Open-source honeypot & attacker-intelligence platform for Django',
+    bullets: [
+      'Built and published an open-source Django honeypot to PyPI (`honeydj`, MIT): middleware runs before URL resolution to answer scanner probes with convincing decoys, keeping the request hot path to a single insert and offloading all GeoIP, threat-feed, and fingerprinting work to Celery.',
+      'Streamed enriched events to a live Leaflet attack map over Django Channels/WebSockets, and made the async pipeline concurrency-safe via row-locked, idempotent per-IP profiling so parallel workers never double-count an attacker’s threat score.',
+    ],
+    tech: 'Django REST Framework, Celery, Redis, Django Channels, Daphne (ASGI), PostgreSQL, PyPI',
+  },
+  {
     name: 'Pantry Run',
     year: '2026',
     slug: 'pantry-run',
