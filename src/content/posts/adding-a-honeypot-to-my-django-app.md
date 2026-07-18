@@ -133,3 +133,7 @@ collision. Nothing improves a tool like being forced to actually live with it.
 I am letting the trap run now. In a couple of weeks I will share the fuller numbers, how many probes,
 from where, hunting for what. If day one is any indication, the total is going to be higher than most
 people would guess.
+
+**Update:** the numbers are in. Twelve days of traffic, 504 probes, and one file almost every
+attacker came hunting for. I wrote it all up in the [follow-up
+report](/writing/what-my-honeypot-caught-in-12-days).

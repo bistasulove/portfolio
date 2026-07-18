@@ -99,3 +99,6 @@ traffic, in a [follow-up post](/writing/adding-a-honeypot-to-my-django-app).
 
 I am going to let it run for a couple of weeks and then share the numbers. I have a feeling the
 volume is going to surprise a few people. It already surprised me.
+
+**Update:** the report is live. Here is [what twelve days of honeypot traffic actually looked
+like](/writing/what-my-honeypot-caught-in-12-days).
