@@ -4,7 +4,7 @@ export const SITE = {
   name: 'Sulav Raj Bista',
   role: 'Senior Software Engineer',
   location: 'Brisbane, AU',
-  status: 'Open to senior roles',
+  status: 'Software Engineer @ Tanda',
   description:
     'Senior software engineer (7+ years) building and scaling high-traffic APIs and cloud platforms. I own critical modules end to end — architecture, reliability, and the tooling around them.',
   email: 'bistasulavraj@gmail.com',
@@ -85,6 +85,18 @@ export interface CareerEntry {
 }
 
 export const CAREER: CareerEntry[] = [
+  {
+    period: 'Sep 2026 — Present',
+    role: 'Software Engineer',
+    company: 'Tanda',
+    location: 'Brisbane, AU (Hybrid)',
+    highlight:
+      'Building workforce management software — rostering, time and attendance, and payroll — for businesses across Australia and beyond.',
+    bullets: [
+      'Building workforce management software — rostering, time and attendance, and payroll — used by businesses across Australia and beyond.',
+    ],
+    tech: '',
+  },
   {
     period: 'Jul 2021 — Mar 2026',
     role: 'Senior Software Engineer',

@@ -72,7 +72,7 @@ const skills = {
                   <li>{b}</li>
                 ))}
               </ul>
-              <p class="font-mono text-xs text-muted mt-2">{e.tech}</p>
+              {e.tech && <p class="font-mono text-xs text-muted mt-2">{e.tech}</p>}
             </div>
           ))
         }
