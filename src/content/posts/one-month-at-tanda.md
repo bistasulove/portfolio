@@ -1,5 +1,5 @@
 ---
-title: "I applied for a Rails job hoping they wouldn't call. A month later I've closed 30 PRs."
+title: 'My first month at Tanda'
 description: 'How a Python and Django engineer ended up at Tanda, a Rails shop: an interview with no LeetCode, a first day back in an office after six years remote, and the fastest first month of my career.'
 publishDate: 2026-10-16
 tags: ['career', 'tanda', 'interviews', 'rails', 'ai', 'brisbane']
